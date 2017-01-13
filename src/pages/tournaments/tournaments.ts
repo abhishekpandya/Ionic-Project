@@ -19,4 +19,8 @@ export class TournamentsPage {
     console.log('ionViewDidLoad TournamentsPage');
   }
 
+  navigate(){
+    this.navCtrl.pop();
+  }
+
 }
