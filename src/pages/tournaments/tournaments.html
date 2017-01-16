@@ -6,13 +6,20 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Tournaments</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Select a Tournaments</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <button ion-button (click) = "navigate()">Back</button>
+  <ion-list>
+    <button ion-item (click)= "itemTapped()">
+      ICC Champions Trophy
+    </button>
+    <button ion-item (click)= "itemTapped()">
+      ICC World Cup
+    </button>
+  </ion-list>
 </ion-content>
