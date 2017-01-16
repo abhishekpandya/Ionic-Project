@@ -4,7 +4,7 @@ import { MyApp } from './app.component';
 // import { Page1 } from '../pages/page1/page1';
 // import { Page2 } from '../pages/page2/page2';
 import { MyTeamsPage } from '../pages/pages';
-import { TeamsDetailsPage } from '../pages/pages';
+import { TeamsDetailsPage,TeamHomePage,StandingsPage } from '../pages/pages';
 import { TournamentsPage, TeamsPage } from '../pages/pages';
 
 @NgModule({
@@ -14,6 +14,8 @@ import { TournamentsPage, TeamsPage } from '../pages/pages';
     TournamentsPage,
     TeamsPage,
     TeamsDetailsPage,
+    TeamHomePage,
+    StandingsPage,
     // Page1,
     // Page2
   ],
@@ -27,6 +29,8 @@ import { TournamentsPage, TeamsPage } from '../pages/pages';
     TournamentsPage,
     TeamsPage,
     TeamsDetailsPage,
+    TeamHomePage,
+    StandingsPage,
     // Page1,
     // Page2
   ],
