@@ -1,11 +1,13 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-// import { Page1 } from '../pages/page1/page1';
-// import { Page2 } from '../pages/page2/page2';
+
 import { MyTeamsPage } from '../pages/pages';
 import { TeamsDetailsPage,TeamHomePage,StandingsPage } from '../pages/pages';
 import { TournamentsPage, TeamsPage } from '../pages/pages';
+
 
 @NgModule({
   declarations: [
