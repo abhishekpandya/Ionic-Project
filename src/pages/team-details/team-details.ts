@@ -18,17 +18,20 @@ export class TeamsDetailsPage {
 
   team: any;
   games: any[];
+  teamStanding: any;
   private tourneyData: any;
   constructor(
     public navCtrl: NavController,
     private navParams: NavParams,
     private eliteApi: EliteApi) {
-
+    this.team = this.navParams.data;
+    this.tourneyData = this.eliteApi.getCurrentTourney();
+    this.teamStanding = _.find(this.tourneyData.standings, { 'teamId': this.team.id })
   }
 
   ionViewDidLoad() {
-    this.team = this.navParams.data;
-    this.tourneyData = this.eliteApi.getCurrentTourney();
+    //this.team = this.navParams.data;
+    //this.tourneyData = this.eliteApi.getCurrentTourney();
 
     this.games = _.chain(this.tourneyData.games)
       .filter(g => g.team1Id === this.team.id || g.team2Id === this.team.id)
@@ -47,6 +50,9 @@ export class TeamsDetailsPage {
         };
       })
       .value();
+    console.log("Test");
+    //this.teamStanding = _.find(this.tourneyData.standings,{'teamId' : this.team.id })
+    console.log(this.teamStanding);
   }
 
   getScoreDisplay(isTeam1, team1Score, team2Score) {

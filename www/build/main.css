@@ -22108,3 +22108,13 @@ sub {
     padding-top: calc(16px + 20px);
   }
 }
+
+.my-teams-header {
+  font-weight: bold;
+  font-size: large;
+}
+
+.my-teams-header {
+  font-weight: bold;
+  font-size: large;
+}
