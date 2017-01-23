@@ -3,6 +3,7 @@ import { LoadingController, NavController, NavParams } from 'ionic-angular';
 
 import { TeamHomePage } from '../pages';
 import { EliteApi } from '../../shared/shared';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'page-teams',
@@ -10,6 +11,8 @@ import { EliteApi } from '../../shared/shared';
 })
 export class TeamsPage {
 
+  private allTeams:any;
+  private allTeamDivisions: any;
   teams = [];
 
   constructor(
@@ -28,7 +31,16 @@ export class TeamsPage {
       let selectedtourney = this.navParams.data;
 
       this.elietApi.getTournamentData(selectedtourney.id).subscribe(data=>{
-        this.teams = data.teams;
+        this.allTeams = data.teams;
+        
+        this.allTeamDivisions =
+          _.chain(data.teams)
+          .groupBy('division')
+          .toPairs()
+          .map(item => _.zipObject(['divisionName','divisionTeams'],item))
+          .value();
+        
+        this.teams = this.allTeamDivisions;
         loader.dismiss();
       });
     })
