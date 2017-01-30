@@ -29,17 +29,18 @@ export class MyTeamsPage {
     goToTournaments() {
         this.nav.push(TournamentsPage);
     }
+
     favoriteTapped($event, favorite) {
         let loader = this.loadingController.create({
             content: 'Getting data...',
-            spinner: 'dots'
+            spinner: 'dots',
             //dismissOnPageChange: true
         });
         loader.present().then(() => {
             this.eliteApi.getTournamentData(favorite.tournamentId)
-                .subscribe(t => this.nav.push(TeamHomePage, favorite.team));
-                loader.dismiss();
-        }
-        )
+                .subscribe(t => {this.nav.push(TeamHomePage, favorite.team);
+                    loader.dismiss();
+                    });
+        })
     }
 }
