@@ -18,6 +18,11 @@
           <!--Placeholder-->
         </ion-col>
       </ion-row>
+      <ion-item>
+        <ion-label>Date Filter:</ion-label>
+        <ion-toggle [(ngModel)]="userDateFilter" (ionChange)="dateChanged()"></ion-toggle>
+        <ion-datetime displayFormat="M/D/YYYY" pickerFormat="M/D/YYYY" [(ngModel)]="dateFilter" (ionChange)="dateChanged()" [(disabled)]="!userDateFilter"></ion-datetime>
+      </ion-item>
     </ion-card-content>
   </ion-card>
   <ion-list>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import * as _ from 'lodash';
+import * as moment from 'moment';
 import { EliteApi } from '../../shared/shared'
 import { GamePage } from '../pages'
 /*
@@ -15,15 +16,19 @@ import { GamePage } from '../pages'
   templateUrl: 'team-details.html'
 })
 export class TeamsDetailsPage {
-
+  allGames: any[];
+  dateFilter: string;
   team: any;
   games: any[];
   teamStanding: any;
+  userDateFilter = false;
   private tourneyData: any;
+
   constructor(
     public navCtrl: NavController,
     private navParams: NavParams,
     private eliteApi: EliteApi) {
+
     this.team = this.navParams.data;
     this.tourneyData = this.eliteApi.getCurrentTourney();
     this.teamStanding = _.find(this.tourneyData.standings, { 'teamId': this.team.id })
@@ -50,9 +55,9 @@ export class TeamsDetailsPage {
         };
       })
       .value();
-    console.log("Test");
     //this.teamStanding = _.find(this.tourneyData.standings,{'teamId' : this.team.id })
-    console.log(this.teamStanding);
+
+    this.allGames = this.games;
   }
 
   getScoreDisplay(isTeam1, team1Score, team2Score) {
@@ -72,4 +77,12 @@ export class TeamsDetailsPage {
     this.navCtrl.parent.parent.push(GamePage, sourceGame)
   }
 
+  dateChanged() {
+    if (this.userDateFilter) {
+      this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'))
+    }
+    else {
+      this.games = this.allGames;
+    }
+  }
 }
