@@ -85,4 +85,12 @@ export class TeamsDetailsPage {
       this.games = this.allGames;
     }
   }
+
+  getScoreWorL(game) {
+    return game.scoreDisplay ? game.scoreDisplay[0] : '';
+  }
+
+  getSocreDisplayBadgeClass(game) {
+    return game.scoreDisplay.indexOf('W:') === 0 ? 'primary' : 'danger';
+  }
 }
